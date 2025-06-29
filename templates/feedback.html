@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit Feedback</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eaf9ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <form action="/submit" method="POST">
+    <h2>Team Feedback</h2>
+    <input type="text" name="member" placeholder="Team Member Name" required>
+    <input type="text" name="project" placeholder="Project Name" required>
+    <input type="text" name="task" placeholder="Task Name" required>
+    <select name="difficulty" required>
+      <option value="" disabled selected>Work Difficulty (1 to 5)</option>
+      <option value="1">1 - Very Easy</option>
+      <option value="2">2 - Easy</option>
+      <option value="3">3 - Medium</option>
+      <option value="4">4 - Difficult</option>
+      <option value="5">5 - Very Difficult</option>
+    </select>
+    <textarea name="comments" placeholder="Comments..." rows="4"></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+</body>
+</html>

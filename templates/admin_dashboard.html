@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2563eb;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Admin Dashboard</h2>
+    {% if feedbacks %}
+      <table>
+        <tr>
+          <th>Member</th>
+          <th>Project</th>
+          <th>Task</th>
+          <th>Difficulty</th>
+          <th>Comments</th>
+          <th>Delete</th>
+        </tr>
+        {% for f in feedbacks %}
+        <tr>
+          <td>{{ f.member }}</td>
+          <td>{{ f.project }}</td>
+          <td>{{ f.task }}</td>
+          <td>{{ f.difficulty }}</td>
+          <td>{{ f.comments }}</td>
+          <td><a class="delete-btn" href="{{ url_for('delete_feedback', index=loop.index0) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p style="text-align:center;">No feedback available.</p>
+    {% endif %}
+
+    <div class="actions">
+      <a href="{{ url_for('change_password') }}">Change Password</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
